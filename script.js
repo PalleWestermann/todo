@@ -40,11 +40,30 @@ function addTask() {
 
 function deleteAllTasks()
 {
-
+    console.log("test");
 }
 
 function displayTasks() {
-
+    todoList.innerHTML = "";
+    todo.array.forEach((item, index) => {
+        const p = document.createElement("p");
+        p.innerHTML = `
+            <div class="todo-container">
+                <input type="checkbox" class="todo-checkbox"
+                id="input-${index}" ${
+                    item.disabled ? "checked" : ""
+                }>
+                <p id="todo-${index}" class="${
+                    item.disabled ? "disabled":""
+                }" onclick="editTask(${index})">${item.text}
+                </p>
+            </div>
+        `;
+        p.querySelector(".todo-checkbox").addEventListener("change", () => {
+            toggleTask(index);
+        });
+        todoList.appendChild(p);
+    });
 }
 
 function saveToLocalStorage() {
