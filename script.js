@@ -45,7 +45,7 @@ function deleteAllTasks()
 
 function displayTasks() {
     todoList.innerHTML = "";
-    todo.array.forEach((item, index) => {
+    todo.forEach((item, index) => {
         const p = document.createElement("p");
         p.innerHTML = `
             <div class="todo-container">
